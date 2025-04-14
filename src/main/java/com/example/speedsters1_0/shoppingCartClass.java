@@ -1,25 +1,24 @@
 package com.example.speedsters1_0;
 
 import java.util.ArrayList;
-import java.util.List;
 public class ShoppingCart implements shoppingCart {
-    private List<Object> cart;
+    private ArrayList<Item> cart;
     //need some way to store past orders
 
     public ShoppingCartClass() {
         this.cart = new ArrayList<>();
     }
     @Override
-    public void addItem(Object item) {
+    public void addItem(Item item) {
         cart.add(item);
     }
     //for now it only checks one but maybe change for later to check all or multiple at a time
-    // need to write item class to be able to get all the variables to display
+    // need to write item class to be able to get all the variables to dis
     @Override
-    public void checkFoodInfo(Object item) {
+    public void checkFoodInfo(Item item) {
         if(cart.contains(item)){
-            System.out.println(item + " price: " + item.price);
-            System.out.println(item + " calories: " + item.calories);
+            System.out.println(item.itemName + " price: " + item.itemPrice);
+            System.out.println(item.itemName + " description: " + item.foodDescription);
             //example of variables can add more
         } else {
             System.out.println("No item found")
@@ -27,7 +26,7 @@ public class ShoppingCart implements shoppingCart {
     }
 
     @Override
-    public void removeItem(Object item) {
+    public void removeItem(Item item) {
         if(cart.contains(item)){
             cart.remove(item);
         }

@@ -7,61 +7,93 @@ package com.example.speedsters1_0;
 
 interface AccountInterface {
 	
-	String Name = "";
-	String Email = "";
-	String UserName = "";
-	String Password = "";
-	int PhoneNum = 999999999;
+	 String name;
+	 String email;
+	 String username;
+	 String password;
+	 int phoneNumber;
+	 int id;
 	//Address myAddress = null;
 	
-	String changePW();
-	String changeUN();
-	String changeName();
+	String changePW(String p);
+	String changeUN(String u);
+	String changeName(String u);
+	String changeEmail(String u);
+	int changePhoneNumber(int x);
 	void deleteAccount();
 	void mergeAccounts();
 	
 }
 
 public class Account implements AccountInterface{
-	
+	private int id;
+	private String name;
+	private String password;
+	private String email;
+	private String username;
+	private int phoneNumber;
 	//Constructor
-	public Account() {
-		
+	public Account(String name, String password, String email, String username, int phoneNumber) {
+		this.id = //someway to generate unique ids
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.username = username;
+		this.phoneNumber = phoneNumber;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	int getId(){
+		return id;
+	}
+	String getUsername(){
+		return username;
+	}
+	String getName(){
+		return name;
+	}
+	String getEmail(){
+		return email;
+	}
+	int getPhoneNumber(){
+		return phoneNumber;
 	}
 
 	@Override
-	public String changePW() {
-		// TODO Auto-generated method stub
+	public String changePW(String newPassword) {
+		this.password = newPassword;
 		return null;
 	}
 
 	@Override
-	public String changeUN() {
-		// TODO Auto-generated method stub
-		return null;
+	public String changeUN(String newUsername) {
+		this.username = newUsername;
+		return username;
 	}
 
 	@Override
-	public String changeName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String changeName(String newName) {
+		this.name = newName;
+		return name;
+	}
+	@Override
+	public String changeEmail(String newEmail){
+		this.email = newEmail;
+	}
+	@Override
+	public int changePhoneNumber(int newPhoneNumber){
+		this.phoneNumber = newPhoneNumber;
 	}
 
 	@Override
 	public void deleteAccount() {
-		// TODO Auto-generated method stub
+		//
 		
 	}
 
-	@Override
-	public void mergeAccounts() {
-		// TODO Auto-generated method stub
+	//@Override dont think we need this in the account section but we will see
+	//public void mergeAccounts() {
+	//	// TODO Auto-generated method stub
 		
-	}
+	//}
 
 }

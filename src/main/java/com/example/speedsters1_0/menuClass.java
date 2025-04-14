@@ -1,4 +1,6 @@
-package com.example.speedsters1_0;
+/*package com.example.speedsters1_0;
+
+shelving this for rn
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,3 +53,4 @@ public class MenuClass implements menu {
                 }
             }
         }
+ */
