@@ -3,6 +3,7 @@ package com.example.speedsters1_0;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +23,7 @@ public class HelloController {
     public TextField PhoneNumberTextBox;
     public Button SignInButton;
     public Button CreateAccountButton;
+    public Label UsersNameLabel;
     Account baseAccountList = new Account();
     Account newAccount = new Account();
     //AccountList accountList = new AccountList();
@@ -50,6 +52,7 @@ public class HelloController {
 
     }
 
+    //sign in view button
     @FXML
     public void onSignInClick(ActionEvent actionEvent) {
         //Scanner scan = new Scanner(System.in);
@@ -122,53 +125,57 @@ public class HelloController {
     }
 
     //I don't think these do anything
-    @FXML
-    public void onUserNameEntered(KeyEvent inputMethodEvent) {
-        username = UserNameTextBox.getText();
-    }
-    @FXML
-    public void onPasswordEntered(InputMethodEvent inputMethodEvent) {
-        password = PasswordTextBox.getText();
-    }
-    @FXML
-    public void onNameEntered(InputMethodEvent inputMethodEvent) {
-        Name = NameTextBox.getText();
-        newAccount.changeName(Name);
-    }
-    @FXML
-    public void onEmailEntered(InputMethodEvent inputMethodEvent) {
-        Email = EmailTextBox.getText();
-        newAccount.updateEmail(Email);
-    }
-    @FXML
-    public void onPhoneNumberEntered(InputMethodEvent inputMethodEvent) {
-        PhoneNumber = PhoneNumberTextBox.getText();
-        newAccount.updatePhoneNum(PhoneNumber);
-    }
-    @FXML
-    public void onNewPasswordEntered(InputMethodEvent inputMethodEvent) {
-        password = NewPasswordTextBox.getText();
-        newAccount.changePW(password);
-    }
-    @FXML
-    public void onNewUserNameEntered(InputMethodEvent inputMethodEvent) {
-        username = NewUserNameTextBox.getText();
-        newAccount.changeUN(username);
-    }
+//    @FXML
+//    public void onUserNameEntered(KeyEvent inputMethodEvent) {
+//        username = UserNameTextBox.getText();
+//    }
+//    @FXML
+//    public void onPasswordEntered(InputMethodEvent inputMethodEvent) {
+//        password = PasswordTextBox.getText();
+//    }
+//    @FXML
+//    public void onNameEntered(InputMethodEvent inputMethodEvent) {
+//        Name = NameTextBox.getText();
+//        newAccount.changeName(Name);
+//    }
+//    @FXML
+//    public void onEmailEntered(InputMethodEvent inputMethodEvent) {
+//        Email = EmailTextBox.getText();
+//        newAccount.updateEmail(Email);
+//    }
+//    @FXML
+//    public void onPhoneNumberEntered(InputMethodEvent inputMethodEvent) {
+//        PhoneNumber = PhoneNumberTextBox.getText();
+//        newAccount.updatePhoneNum(PhoneNumber);
+//    }
+//    @FXML
+//    public void onNewPasswordEntered(InputMethodEvent inputMethodEvent) {
+//        password = NewPasswordTextBox.getText();
+//        newAccount.changePW(password);
+//    }
+//    @FXML
+//    public void onNewUserNameEntered(InputMethodEvent inputMethodEvent) {
+//        username = NewUserNameTextBox.getText();
+//        newAccount.changeUN(username);
+//    }
 
     //These work to create a generic account
+    //Sign in conformation button
     @FXML
     public void onSignInInfoEntered(ActionEvent actionEvent) {
-        username = UserNameTextBox.getText();
-        password = PasswordTextBox.getText();
-        if(baseAccountList.verifyCredentials(username, password)){
-            System.out.println("Sign-in successful! Welcome " + username);
-
+        //username = UserNameTextBox.getText();
+        //password = PasswordTextBox.getText();
+        if(baseAccountList.verifyCredentials(UserNameTextBox.getText(), PasswordTextBox.getText())){
+            System.out.println("Sign-in successful! Welcome " + UserNameTextBox.getText());
+            UsersNameLabel.setText(baseAccountList.getAccountByCredentials(UserNameTextBox.getText(), PasswordTextBox.getText()).Name);
+            PasswordTextBox.setVisible(false);
+            UserNameTextBox.setVisible(false);
         } else {
             System.out.println("Invalid username or password.");
         }
     }
 
+    //createAccount button
     @FXML
     public void onCreateAccountInfoEntered(ActionEvent actionEvent) {
         newAccount.changeUN(NewUserNameTextBox.getText());
@@ -187,6 +194,13 @@ public class HelloController {
             System.out.println("Account created!");
             baseAccountList.addAccount(newAccount);
             System.out.println(baseAccountList.getAccountList().get(0).Name);
+            UsersNameLabel.setText(baseAccountList.getAccountByCredentials(NewUserNameTextBox.getText(), NewPasswordTextBox.getText()).Name);
+            NameTextBox.setVisible(false);
+            EmailTextBox.setVisible(false);
+            PhoneNumberTextBox.setVisible(false);
+            NewPasswordTextBox.setVisible(false);
+            NewUserNameTextBox.setVisible(false);
+            CreateAccountButton.setVisible(false);
         }
     }
 }

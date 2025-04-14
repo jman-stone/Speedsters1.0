@@ -62,6 +62,16 @@ public class Account implements AccountInterface{
 
 	}
 
+
+	public Account getAccountByCredentials(String username, String password) {
+		for (Account account : AccountList) {
+			if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+				return account;
+			}
+		}
+		return null;
+	}
+
 	@Override
 	public boolean verifyCredentials(String username, String password) {
 
@@ -72,6 +82,8 @@ public class Account implements AccountInterface{
 		}
 		return false;
 	}
+
+	
 
 	@Override
 	public void changePW(String password) {
