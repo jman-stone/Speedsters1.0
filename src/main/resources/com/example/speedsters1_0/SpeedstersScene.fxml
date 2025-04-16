@@ -43,6 +43,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -60,6 +62,7 @@
           <Button mnemonicParsing="false" onAction="#onSignInClick" prefHeight="25.0" prefWidth="61.0" text="Sign In" />
             <Button mnemonicParsing="false" onAction="#onNewUserClick" text="New User" />
             <Button mnemonicParsing="false" onAction="#onCartClick" text="Cart" />
+            <Label fx:id="UsersNameLabel" text="Guest" />
         </items>
       </ToolBar>
       <TextField alignment="CENTER_RIGHT" text="Search" />
@@ -106,6 +109,11 @@
                 <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
               </textFill>
             </Label>
+                  <ImageView fitHeight="196.0" fitWidth="200.0" layoutX="11.0" layoutY="47.0">
+                     <image>
+                        <Image url="@Untitled%20design.jpg" />
+                     </image>
+                  </ImageView>
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
@@ -113,13 +121,13 @@
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
               <children>
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextField fx:id="UserNameTextBox" layoutX="141.0" layoutY="64.0" onKeyTyped="#onUserNameEntered" promptText="User Name" visible="false" />
-                        <TextField fx:id="PasswordTextBox" layoutX="141.0" layoutY="101.0" onInputMethodTextChanged="#onPasswordEntered" promptText="Password" visible="false" />
-                        <TextField fx:id="NameTextBox" layoutX="141.0" layoutY="137.0" onInputMethodTextChanged="#onNameEntered" promptText="Name" visible="false" />
-                        <TextField fx:id="EmailTextBox" layoutX="141.0" layoutY="173.0" onInputMethodTextChanged="#onEmailEntered" promptText="E-mail" visible="false" />
-                        <TextField fx:id="PhoneNumberTextBox" layoutX="141.0" layoutY="209.0" onInputMethodTextChanged="#onPhoneNumberEntered" promptText="Phone Number" visible="false" />
-                        <TextField fx:id="NewPasswordTextBox" layoutX="141.0" layoutY="101.0" onInputMethodTextChanged="#onNewPasswordEntered" promptText="Password" visible="false" />
-                        <TextField fx:id="NewUserNameTextBox" layoutX="141.0" layoutY="64.0" onInputMethodTextChanged="#onNewUserNameEntered" promptText="User Name" visible="false" />
+                        <TextField fx:id="UserNameTextBox" layoutX="141.0" layoutY="64.0" promptText="User Name" visible="false" />
+                        <TextField fx:id="PasswordTextBox" layoutX="141.0" layoutY="101.0" promptText="Password" visible="false" />
+                        <TextField fx:id="NameTextBox" layoutX="141.0" layoutY="137.0" promptText="Name" visible="false" />
+                        <TextField fx:id="EmailTextBox" layoutX="141.0" layoutY="173.0" promptText="E-mail" visible="false" />
+                        <TextField fx:id="PhoneNumberTextBox" layoutX="141.0" layoutY="209.0" promptText="Phone Number" visible="false" />
+                        <TextField fx:id="NewPasswordTextBox" layoutX="141.0" layoutY="101.0" promptText="Password" visible="false" />
+                        <TextField fx:id="NewUserNameTextBox" layoutX="141.0" layoutY="64.0" promptText="User Name" visible="false" />
                         <Button fx:id="SignInButton" layoutX="190.0" layoutY="137.0" mnemonicParsing="false" onAction="#onSignInInfoEntered" text="Sign In" visible="false" />
                         <Button fx:id="CreateAccountButton" layoutX="168.0" layoutY="260.0" mnemonicParsing="false" onAction="#onCreateAccountInfoEntered" text="Create Account" visible="false" />
               </children>

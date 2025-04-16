@@ -8,43 +8,62 @@ package com.example.speedsters1_0;
 import java.util.ArrayList;
 
 interface AccountInterface {
-	
+
 	void removeAccount(Account account);
 	ArrayList<Account> getAccountList();
-	void updateEmail(String email);
-	void updatePhoneNum(String phoneNum);
+	//String updateEmail(String email);
+	String changeEmail(String newEmail);
+	String changePhoneNumber(String newPhoneNumber);
+	//void updatePhoneNum(String phoneNum);
 	void addAccount(Account account);
 	void changePW(String password);
-	void changeUN(String username);
-	void changeName(String name);
+	String changeUN(String username);
+	String changeName(String name);
 	void deleteAccount();
-	void mergeAccounts();
-
+	//void mergeAccounts();
 	String getUsername();
-
 	String getPassword();
 	boolean verifyCredentials(String username, String password);
+
 }
 
 public class Account implements AccountInterface{
-
-	String Name = "";
-	String Email = "";
-	String UserName = "";
-	String Password = "";
-	String PhoneNum = "";
-	//Address myAddress = null;
+	private int id;
+	private String name;
+	private String password;
+	private String email;
+	private String username;
+	private String phoneNumber;
 	ArrayList<Account> AccountList = new ArrayList<>();
-
+	//Constructor
+	public Account(String name, String password, String username, String email, String phoneNumber) {
+		this.id = 5;//someway to generate unique ids
+		this.name = name;
+		this.password = password;
+		this.email = email;
+		this.username = username;
+		this.phoneNumber = phoneNumber;
+	}
 
 	@Override
 	public ArrayList<Account> getAccountList() {
 		return AccountList;
 	}
-
-	//Constructor
-	public Account() {
-
+	int getId(){
+		return id;
+	}
+	@Override
+    public String getUsername(){
+		return username;
+	}
+	String getName(){
+		return name;
+	}
+	String getEmail(){
+		return email;
+	}
+	String getPhoneNumber(){
+		return phoneNumber;
 	}
 
 	@Override
@@ -57,9 +76,13 @@ public class Account implements AccountInterface{
 		AccountList.remove(account);
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public Account getAccountByCredentials(String username, String password) {
+		for (Account account : AccountList) {
+			if (account.getUsername().equals(username) && account.getPassword().equals(password)) {
+				return account;
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -74,54 +97,56 @@ public class Account implements AccountInterface{
 	}
 
 	@Override
-	public void changePW(String password) {
-		// TODO Auto-generated method stub
-		Password = password;
+	public void changePW(String newPassword) {
+		this.password = newPassword;
+
 	}
 
 	@Override
-	public void changeUN(String username) {
-		// TODO Auto-generated method stub
-		UserName = username;
+	public String changeUN(String newUsername) {
+		this.username = newUsername;
+		return username;
 	}
 
 	@Override
-	public void changeName(String name) {
-		// TODO Auto-generated method stub
-		Name = name;
+	public String changeName(String newName) {
+		this.name = newName;
+		return name;
+	}
+	@Override
+	public String changeEmail(String newEmail){
+		this.email = newEmail;
+		return email;
+	}
+	@Override
+	public String changePhoneNumber(String newPhoneNumber){
+		this.phoneNumber = newPhoneNumber;
+		return phoneNumber;
 	}
 
-	@Override
-	public void updateEmail(String email) {
-		Email = email;
-	}
-
-	@Override
-	public void updatePhoneNum(String phoneNum) {
-		PhoneNum = phoneNum;
-	}
+//	@Override
+//	public void updatePhoneNum(String phoneNum) {
+//		PhoneNum = phoneNum;
+//	}
 	@Override
 	public void deleteAccount() {
-		// TODO Auto-generated method stub
+		//
 		//remove account
 	}
 
-	@Override
-	public void mergeAccounts() {
-		// TODO Auto-generated method stub
+	//@Override dont think we need this in the account section but we will see
+	//public void mergeAccounts() {
+	//	// TODO Auto-generated method stub
 		
-	}
+	//}
 
-	@Override
-	public String getUsername() {
-		return UserName;
-	}
+
 
 	@Override
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
-	
+
 
 }
