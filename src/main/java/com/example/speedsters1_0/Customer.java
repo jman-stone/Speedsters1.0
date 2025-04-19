@@ -4,16 +4,16 @@ import java.util.ArrayList;
 //import Item, Meal, Restaurant
 
 interface CustomerInterface {
-	Payment PaymentInfo;
-	ArrayList<Item> favoriteItems;
-	ArrayList<Restaurant> favoriteRestaraunts;
+	//Payment PaymentInfo;
+	//ArrayList<Item> favoriteItems;
+	//ArrayList<Restaurant> favoriteRestaraunts;
 	
 	void addFavorite(Item x);
 
 	void addFavorite(Restaurant x);
 	void removeFavorite(Item x);
 	void removeFavorite(Restaurant x);
-	void updatePaymentInfo(Payment paymentInfo);
+	Payment updatePaymentInfo(Payment paymentInfo);
 	
 }
 public class Customer extends Account implements CustomerInterface{
@@ -21,12 +21,15 @@ public class Customer extends Account implements CustomerInterface{
 	ArrayList<Item> favoriteItems;
 	ArrayList<Restaurant> favoriteRestaraunts;
 	//Constructor
-	//fill out payment later
-	public Customer() {
-		this.paymentInfo = Payment();
+	//fills out payment later
+	public Customer(String name, String password, String username, String email, String phoneNumber) {
+		super(name, password, username, email, phoneNumber);
+		//this.paymentInfo = new Payment();
 		this.favoriteItems = new ArrayList<>();
 		this.favoriteRestaraunts = new ArrayList<>();
 	}
+
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -8,11 +8,12 @@ interface AdminInterface{
 }
 
 public class Admin extends Account implements AdminInterface {
-
 	//Constructor
-	public Admin() {
-		
+	public Admin(String name, String password, String username, String email, String phoneNumber) {
+		super(name, password, username, email, phoneNumber);
 	}
+
+
 	
 	@Override
 	public void mergeAccounts() {

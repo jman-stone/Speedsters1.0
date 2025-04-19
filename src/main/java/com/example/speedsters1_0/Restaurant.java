@@ -2,31 +2,31 @@ package com.example.speedsters1_0;
 
 import java.util.ArrayList;
 
-	public interface RestaurantInterface {
+	interface RestaurantInterface {
 
-		String name;
-		String cuisineType;
-		double lowPrice;
-		double highPrice;
-		String priceRange = lowPrice + " - " + highPrice;
-		ArrayList<Meal> menu;
-		double waitTime;
+//		String name;
+//		String cuisineType;
+//		double lowPrice;
+//		double highPrice;
+//		String priceRange = lowPrice + " - " + highPrice;
+//		ArrayList<Meal> menu;
+//		double waitTime;
 
 		String updateName(String x);
 
 		String updateCuisine(String cuisine);
 
-		String updatePriceRange(double lowPrice, double highPrice);
+		//String updatePriceRange(double lowPrice, double highPrice);
 
 		double updateWaitTime(double waitTime);
 
-		void addToMenu(Meal x);
+		//void addToMenu(Meal x);
 
-		void removeFromMenu(Meal x);
+		//void removeFromMenu(Meal x);
 
 		Item newItem(String itemName, float price);
 
-		Meal newMeal(Item nextItem);
+		//Meal newMeal(Item nextItem);
 
 	}
     public class Restaurant implements RestaurantInterface{
@@ -35,7 +35,7 @@ import java.util.ArrayList;
 	private double lowPrice;
 	private double highPrice;
 	private double waitTime;
-	ArrayList<Meal> menu;
+	//ArrayList<Meal> menu;
 
 
 	//Constructor
@@ -45,7 +45,7 @@ import java.util.ArrayList;
         this.lowPrice = lowPrice;
         this.highPrice = highPrice;
 		this.waitTime = waitTime;
-        this.menu = new ArrayList<>();
+        //this.menu = new ArrayList<>();
 	}
 
 	public String updateName(String newName){
@@ -59,13 +59,13 @@ import java.util.ArrayList;
 		return cuisineType;
 	}
 
-	@Override
-	public String updatePriceRange(double lowPrice, double highPrice) {
-        this.lowPrice = lowPrice;
-        this.highPrice = highPrice;
-		this.priceRange = lowPrice + " - " + highPrice;
-		return priceRange;
-	}
+//	@Override
+//	public String updatePriceRange(double lowPrice, double highPrice) {
+//        this.lowPrice = lowPrice;
+//        this.highPrice = highPrice;
+//		this.priceRange = lowPrice + " - " + highPrice;
+//		return priceRange;
+//	}
 
 	@Override
 	public double updateWaitTime(double waitTime) {
@@ -73,16 +73,16 @@ import java.util.ArrayList;
 		return waitTime;
 	}
 
-	@Override
-	public void addToMenu(ArrayList<Meal> menu, Meal meal) {
-		menu.add(meal);
+//	@Override
+//	public void addToMenu(ArrayList<Meal> menu, Meal meal) {
+//		menu.add(meal);
+//
+//	}
 
-	}
-
-	@Override
-	public void removeFromMenu(ArrayList<Meal> menu, Meal meal) {
-		menu.remove(meal);
-	}
+//	@Override
+//	public void removeFromMenu(ArrayList<Meal> menu, Meal meal) {
+//		menu.remove(meal);
+//	}
 
 	@Override
 	public Item newItem(String name, float price) {
@@ -90,11 +90,11 @@ import java.util.ArrayList;
 		return newItem;
 	}
 
-	@Override
-	public Meal newMeal(Item nextItem) {
-		Meal meal = new Meal();
-		meal.addItem(nextItem);
-		return meal;
-	}
+//	@Override
+//	public Meal newMeal(Item nextItem) {
+//		Meal meal = new Meal();
+//		meal.addItem(nextItem);
+//		return meal;
+//	}
 
 }

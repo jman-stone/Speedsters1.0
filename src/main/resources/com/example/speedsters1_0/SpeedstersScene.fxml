@@ -41,6 +41,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.Image?>
@@ -65,7 +67,7 @@
             <Label fx:id="UsersNameLabel" text="Guest" />
         </items>
       </ToolBar>
-      <TextField alignment="CENTER_RIGHT" text="Search" />
+      <TextField alignment="CENTER_RIGHT" promptText="Search" />
     <MenuBar VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="Cuisine">
@@ -101,43 +103,82 @@
       <items>
         <AnchorPane>
           <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" prefWidth="-1.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
-              <font>
-                <Font size="18.0" fx:id="x1" />
-              </font>
-              <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-              </textFill>
-            </Label>
                   <ImageView fitHeight="196.0" fitWidth="200.0" layoutX="11.0" layoutY="47.0">
                      <image>
-                        <Image url="@Untitled%20design.jpg" />
+                        <Image url="@SpeedstersLogo.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="McDonaldsPic" fitHeight="152.0" fitWidth="200.0" layoutX="10.0" layoutY="255.0" onMouseClicked="#onMcDonaldsClicked">
+                     <image>
+                        <Image url="@McDonald's_logo.svg.png" />
                      </image>
                   </ImageView>
           </children>
         </AnchorPane>
         <ScrollPane prefHeight="-1.0" prefWidth="-1.0">
           <content>
-            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
+            <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="457.0" prefWidth="431.0">
               <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                        <TextField fx:id="UserNameTextBox" layoutX="141.0" layoutY="64.0" promptText="User Name" visible="false" />
-                        <TextField fx:id="PasswordTextBox" layoutX="141.0" layoutY="101.0" promptText="Password" visible="false" />
-                        <TextField fx:id="NameTextBox" layoutX="141.0" layoutY="137.0" promptText="Name" visible="false" />
-                        <TextField fx:id="EmailTextBox" layoutX="141.0" layoutY="173.0" promptText="E-mail" visible="false" />
-                        <TextField fx:id="PhoneNumberTextBox" layoutX="141.0" layoutY="209.0" promptText="Phone Number" visible="false" />
-                        <TextField fx:id="NewPasswordTextBox" layoutX="141.0" layoutY="101.0" promptText="Password" visible="false" />
-                        <TextField fx:id="NewUserNameTextBox" layoutX="141.0" layoutY="64.0" promptText="User Name" visible="false" />
-                        <Button fx:id="SignInButton" layoutX="190.0" layoutY="137.0" mnemonicParsing="false" onAction="#onSignInInfoEntered" text="Sign In" visible="false" />
-                        <Button fx:id="CreateAccountButton" layoutX="168.0" layoutY="260.0" mnemonicParsing="false" onAction="#onCreateAccountInfoEntered" text="Create Account" visible="false" />
+                        <AnchorPane fx:id="AccountPane" layoutX="2.0" prefHeight="486.0" prefWidth="443.0">
+                           <children>
+                              <TextField fx:id="UserNameTextBox" layoutX="147.0" layoutY="25.0" promptText="User Name" visible="false" />
+                              <TextField fx:id="PasswordTextBox" layoutX="147.0" layoutY="73.0" promptText="Password" visible="false" />
+                              <TextField fx:id="NameTextBox" layoutX="147.0" layoutY="120.0" promptText="Name" />
+                              <TextField fx:id="EmailTextBox" layoutX="147.0" layoutY="171.0" promptText="E-mail" />
+                              <TextField fx:id="PhoneNumberTextBox" layoutX="147.0" layoutY="221.0" promptText="Phone Number" />
+                              <TextField fx:id="NewPasswordTextBox" layoutX="147.0" layoutY="73.0" promptText="Password" />
+                              <TextField fx:id="NewUserNameTextBox" layoutX="148.0" layoutY="25.0" promptText="User Name" />
+                              <Button fx:id="SignInButton" layoutX="196.0" layoutY="268.0" mnemonicParsing="false" onAction="#onSignInInfoEntered" text="Sign In" />
+                              <Button fx:id="CreateAccountButton" layoutX="173.0" layoutY="268.0" mnemonicParsing="false" onAction="#onCreateAccountInfoEntered" text="Create Account" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="McDonaldsMenu" layoutX="-2.0" prefHeight="486.0" prefWidth="443.0" visible="false">
+                           <children>
+                              <ImageView fitHeight="152.0" fitWidth="164.0" layoutX="17.0" layoutY="14.0">
+                                 <image>
+                                    <Image url="@DC_202002_6053_LargeFries_1564x1564-1_nutrition-calculator-tile.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="152.0" fitWidth="157.0" layoutX="230.0" layoutY="16.0">
+                                 <image>
+                                    <Image url="@DC_202302_0005-999_BigMac_1564x1564-1_product-header-mobile.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="159.0" fitWidth="160.0" layoutX="17.0" layoutY="251.0">
+                                 <image>
+                                    <Image url="@DC_202402_0521_MediumCoke_ContourGlassv1_1564x1564_nutrition-calculator-tile.jpg" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="114.0" fitWidth="157.0" layoutX="231.0" layoutY="274.0">
+                                 <image>
+                                    <Image url="@DC_202106_0460_LargeChocolateCone_832x472_1-3-product-tile-desktop.jpg" />
+                                 </image>
+                              </ImageView>
+                              <TextField alignment="CENTER" layoutX="23.0" layoutY="168.0" text="Fries      $4.50" />
+                              <TextField alignment="CENTER" layoutX="234.0" layoutY="168.0" text="Big Mac      $6.50" />
+                              <TextField alignment="CENTER" layoutX="23.0" layoutY="410.0" text="Soda      $2.00" />
+                              <TextField layoutX="234.0" layoutY="410.0" text="Ice Cream      $3.50" />
+                              <Button fx:id="FriesCartButton" layoutX="59.0" layoutY="193.0" mnemonicParsing="false" onAction="#onFriesClicked" text="Add To Cart" />
+                              <Button fx:id="BigMacCartButton" layoutX="270.0" layoutY="193.0" mnemonicParsing="false" onAction="#onBigMacClicked" text="Add To Cart" />
+                              <Button fx:id="SodaCartButton" layoutX="59.0" layoutY="435.0" mnemonicParsing="false" onAction="#onSodaClicked" text="Add To Cart" />
+                              <Button fx:id="IceCreamCartButton" layoutX="270.0" layoutY="435.0" mnemonicParsing="false" onAction="#onIceCreamClicked" text="Add To Cart" />
+                           </children></AnchorPane>
               </children>
             </AnchorPane>
           </content>
         </ScrollPane>
         <AnchorPane>
-          <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-          </children>
+               <children>
+                  <Label layoutX="97.0" layoutY="34.0" text="Cart" />
+                  <TableView editable="true" layoutX="11.0" layoutY="84.0" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn prefWidth="75.0" text="Item" />
+                      <TableColumn prefWidth="75.0" text="Price" />
+                    </columns>
+                  </TableView>
+                  <Label layoutX="66.0" layoutY="295.0" text="Total: $" />
+                  <Label fx:id="CartTotal" layoutX="105.0" layoutY="295.0" text="0.00" />
+               </children>
         </AnchorPane>
       </items>
     </SplitPane>

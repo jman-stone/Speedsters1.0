@@ -5,8 +5,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 public class HelloController {
@@ -24,6 +27,14 @@ public class HelloController {
     public Button SignInButton;
     public Button CreateAccountButton;
     public Label UsersNameLabel;
+    public ImageView McDonaldsPic;
+    public Button FriesCartButton;
+    public Button BigMacCartButton;
+    public Button SodaCartButton;
+    public Button IceCreamCartButton;
+    public AnchorPane McDonaldsMenu;
+    public Label CartTotal;
+    public AnchorPane AccountPane;
     Account baseAccountList = new Account(null , null, null, null, null);
     Account newAccount;// = new Account(null, null, null, null, null);
     //AccountList accountList = new AccountList();
@@ -55,6 +66,7 @@ public class HelloController {
     //sign in view button
     @FXML
     public void onSignInClick(ActionEvent actionEvent) {
+        AccountPane.setVisible(true);
         //Scanner scan = new Scanner(System.in);
         //reveal username and password fields instead of all this
         PasswordTextBox.setVisible(true);
@@ -66,44 +78,29 @@ public class HelloController {
         NewPasswordTextBox.setVisible(false);
         NewUserNameTextBox.setVisible(false);
         CreateAccountButton.setVisible(false);
+        McDonaldsMenu.setVisible(false);
         System.out.println("Please enter your username");
         //String username = scan.nextLine();
         System.out.println("Please enter your password");
         //String password = scan.nextLine();
 
-        //SignInButton.getOnAction();
-//        if(SignInButton.isPressed()&&baseAccountList.verifyCredentials(username, password)){
-//            System.out.println("Sign-in successful! Welcome " + username);
-//
-//        } else {
-//            System.out.println("Invalid username or password.");
-//        }
-
-//        Account blankAccount = new Account();
-//        if (blankAccount.verifyCredentials(username, password)) {
-//            System.out.println("Sign-in successful! Welcome " + username);
-//        } else {
-//            System.out.println("Invalid username or password.");
-//        }
     }
 
     @FXML
     public void onNewUserClick(ActionEvent actionEvent) {
+        AccountPane.setVisible(true);
         PasswordTextBox.setVisible(false);
         UserNameTextBox.setVisible(false);
+        SignInButton.setVisible(false);
         NameTextBox.setVisible(true);
         EmailTextBox.setVisible(true);
         PhoneNumberTextBox.setVisible(true);
         NewPasswordTextBox.setVisible(true);
         NewUserNameTextBox.setVisible(true);
         CreateAccountButton.setVisible(true);
+        McDonaldsMenu.setVisible(false);
 
-//        if(CreateAccountButton.isPressed()&&baseAccountList.verifyCredentials(username, password)){
-//            System.out.println("Username already exists. Please try again.");
-//        } else {
-//            System.out.println("Account created!");
-//            baseAccountList.addAccount(newAccount);
-//        }
+
     }
     @FXML
     public void onCartClick(ActionEvent actionEvent) {
@@ -124,40 +121,6 @@ public class HelloController {
     public void onRestaurantsListClicked(ActionEvent actionEvent) {
     }
 
-    //I don't think these do anything
-//    @FXML
-//    public void onUserNameEntered(KeyEvent inputMethodEvent) {
-//        username = UserNameTextBox.getText();
-//    }
-//    @FXML
-//    public void onPasswordEntered(InputMethodEvent inputMethodEvent) {
-//        password = PasswordTextBox.getText();
-//    }
-//    @FXML
-//    public void onNameEntered(InputMethodEvent inputMethodEvent) {
-//        Name = NameTextBox.getText();
-//        newAccount.changeName(Name);
-//    }
-//    @FXML
-//    public void onEmailEntered(InputMethodEvent inputMethodEvent) {
-//        Email = EmailTextBox.getText();
-//        newAccount.updateEmail(Email);
-//    }
-//    @FXML
-//    public void onPhoneNumberEntered(InputMethodEvent inputMethodEvent) {
-//        PhoneNumber = PhoneNumberTextBox.getText();
-//        newAccount.updatePhoneNum(PhoneNumber);
-//    }
-//    @FXML
-//    public void onNewPasswordEntered(InputMethodEvent inputMethodEvent) {
-//        password = NewPasswordTextBox.getText();
-//        newAccount.changePW(password);
-//    }
-//    @FXML
-//    public void onNewUserNameEntered(InputMethodEvent inputMethodEvent) {
-//        username = NewUserNameTextBox.getText();
-//        newAccount.changeUN(username);
-//    }
 
     //These work to create a generic account
     //Sign in conformation button
@@ -171,6 +134,7 @@ public class HelloController {
             PasswordTextBox.setVisible(false);
             UserNameTextBox.setVisible(false);
             SignInButton.setVisible(false);
+            AccountPane.setVisible(false);
         } else {
             System.out.println("Invalid username or password.");
         }
@@ -180,11 +144,6 @@ public class HelloController {
     @FXML
     public void onCreateAccountInfoEntered(ActionEvent actionEvent) {
         newAccount = new Account(NameTextBox.getText(), NewPasswordTextBox.getText(), NewUserNameTextBox.getText(), EmailTextBox.getText(), PhoneNumberTextBox.getText());
-//        newAccount.changeUN(NewUserNameTextBox.getText());
-//        newAccount.changePW(NewPasswordTextBox.getText());
-//        newAccount.changeName(NameTextBox.getText());
-//        newAccount.changeEmail(EmailTextBox.getText());
-//        newAccount.changePhoneNumber(PhoneNumberTextBox.getText());
 
         if(baseAccountList.verifyCredentials(newAccount.getUsername(), newAccount.getPassword())){
             System.out.println("Username already exists. Please try again.");
@@ -199,6 +158,38 @@ public class HelloController {
             NewPasswordTextBox.setVisible(false);
             NewUserNameTextBox.setVisible(false);
             CreateAccountButton.setVisible(false);
+            AccountPane.setVisible(false);
         }
+    }
+
+    public void onMcDonaldsClicked(MouseEvent mouseEvent) {
+        McDonaldsMenu.setVisible(true);
+        AccountPane.setVisible(false);
+    }
+
+    public double cartTotal = 0;
+
+    //$4.50
+    public void onFriesClicked(ActionEvent actionEvent) {
+        cartTotal += 4.50;
+        CartTotal.setText(cartTotal+"");
+    }
+
+    //$6.50
+    public void onBigMacClicked(ActionEvent actionEvent) {
+        cartTotal += 6.50;
+        CartTotal.setText(cartTotal+"");
+    }
+
+    //$2.00
+    public void onSodaClicked(ActionEvent actionEvent) {
+        cartTotal += 2.00;
+        CartTotal.setText(cartTotal+"");
+    }
+
+    //$3.50
+    public void onIceCreamClicked(ActionEvent actionEvent) {
+        cartTotal += 3.50;
+        CartTotal.setText(cartTotal+"");
     }
 }

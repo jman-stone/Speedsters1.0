@@ -1,6 +1,6 @@
 package com.example.speedsters1_0;
 
-public class Payment implements payment{
+public class Payment implements paymentInterface {
     private String cardNumber;
     private String routingNumber;
     public Payment(String cardNumber, String routingNumber) {
